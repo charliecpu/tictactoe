@@ -14,3 +14,15 @@ player has a winning set, then the game results in a tie.
 **The full spec for this software is in the repo docs folder [tic-tac-toe-spec.md](docs/tic-tac-toe-spec.md)**
 
 ![Tic_Tac_Toe](https://github.com/user-attachments/assets/f138a579-e3d0-4f0f-a6b6-08e2a419d6c0)
+
+## Running the Game
+
+Run the following command to start the graphical game:
+
+```bash
+python tictactoe.py
+```
+
+Select either **2 Player** or **Play Against Computer**, click **Start** and then
+begin clicking the grid buttons to play.
+
