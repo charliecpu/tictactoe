@@ -33,6 +33,7 @@
             btnStart = new Button();
             optTwoPlayer = new RadioButton();
             optPlayComputer = new RadioButton();
+            chkHeadsUp = new CheckBox();
             lblStatus = new Label();
             tblSpots = new TableLayoutPanel();
             btn1 = new Button();
@@ -77,6 +78,7 @@
             tblToolbar.Controls.Add(btnStart, 0, 0);
             tblToolbar.Controls.Add(optTwoPlayer, 1, 0);
             tblToolbar.Controls.Add(optPlayComputer, 2, 0);
+            tblToolbar.Controls.Add(chkHeadsUp, 3, 0);
             tblToolbar.Controls.Add(lblStatus, 0, 1);
             tblToolbar.Dock = DockStyle.Fill;
             tblToolbar.Location = new Point(3, 3);
@@ -121,9 +123,20 @@
             optPlayComputer.TabIndex = 2;
             optPlayComputer.Text = "Play &Against the Computer";
             optPlayComputer.UseVisualStyleBackColor = true;
-            // 
+            //
+            // chkHeadsUp
+            //
+            chkHeadsUp.Anchor = AnchorStyles.Left;
+            chkHeadsUp.AutoSize = true;
+            chkHeadsUp.Location = new Point(813, 3);
+            chkHeadsUp.Name = "chkHeadsUp";
+            chkHeadsUp.Size = new Size(146, 54);
+            chkHeadsUp.TabIndex = 3;
+            chkHeadsUp.Text = "Heads Up";
+            chkHeadsUp.UseVisualStyleBackColor = true;
+            //
             // lblStatus
-            // 
+            //
             lblStatus.BackColor = Color.LightYellow;
             lblStatus.BorderStyle = BorderStyle.FixedSingle;
             tblToolbar.SetColumnSpan(lblStatus, 4);
@@ -131,7 +144,7 @@
             lblStatus.Location = new Point(3, 60);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(956, 61);
-            lblStatus.TabIndex = 3;
+            lblStatus.TabIndex = 4;
             lblStatus.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // tblSpots
@@ -273,6 +286,7 @@
         protected Button btnStart;
         protected RadioButton optTwoPlayer;
         protected RadioButton optPlayComputer;
+        protected CheckBox chkHeadsUp;
         protected Label lblStatus;
         protected TableLayoutPanel tblSpots;
         protected Button btn1;

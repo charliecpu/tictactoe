@@ -23,6 +23,7 @@ namespace TicTacToe
         List<Button> lstrankedbuttons;
 
         Color defaultbackcolor;
+        Color defaultforecolor;
         bool playcomputer = false;
 
         public TicTacToeControl()
@@ -30,6 +31,7 @@ namespace TicTacToe
             InitializeComponent();
             lblName.Text = "MG";
             defaultbackcolor = btn1.BackColor;
+            defaultforecolor = btn1.ForeColor;
             lstbuttons = new() { btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9 };
 
             lstbuttons.ForEach(b => b.Click += SpotButton_Click);
@@ -59,7 +61,12 @@ namespace TicTacToe
 
         private void StartGame()
         {
-            lstbuttons.ForEach(b => { b.Text = ""; b.Enabled = true; });
+            lstbuttons.ForEach(b =>
+            {
+                b.Text = "";
+                b.Enabled = true;
+                b.ForeColor = defaultforecolor;
+            });
             gamestatus = GameStatusEnum.Playing;
             currentturn = TurnEnum.X;
             playcomputer = optPlayComputer.Checked;
@@ -194,6 +201,21 @@ namespace TicTacToe
             }
             lst.ForEach(b => b.BackColor = c);
         }
+
+        private bool IsAboutToLose(TurnEnum player)
+        {
+            var opponent = player == TurnEnum.X ? TurnEnum.O : TurnEnum.X;
+            return lstwinningsets.Any(l =>
+                l.Count(b => b.Text == opponent.ToString()) == 2 &&
+                l.Count(b => b.Text == "") == 1);
+        }
+
+        private void SetPlayerPiecesColor(TurnEnum player, Color color)
+        {
+            lstbuttons.Where(b => b.Text == player.ToString())
+                .ToList()
+                .ForEach(b => b.ForeColor = color);
+        }
         private void DisplayGameStatus()
         {
             string msg = "Click Start to begin Game";
@@ -214,6 +236,13 @@ namespace TicTacToe
             msg = (playcomputer ? optPlayComputer.Text : optTwoPlayer.Text) + " - " + msg;
 
             lblStatus.Text = msg;
+
+            lstbuttons.ForEach(b => b.ForeColor = defaultforecolor);
+            if (chkHeadsUp.Checked && gamestatus == GameStatusEnum.Playing && IsAboutToLose(currentturn))
+            {
+                lblStatus.Text += " - heads up";
+                SetPlayerPiecesColor(currentturn, Color.Orange);
+            }
         }
         private void SpotButton_Click(object? sender, EventArgs e)
         {
