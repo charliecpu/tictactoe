@@ -44,6 +44,7 @@
             btn7 = new Button();
             btn8 = new Button();
             btn9 = new Button();
+            chkWarnAboutToLose = new CheckBox();
             lblName = new Label();
             tblMain.SuspendLayout();
             tblToolbar.SuspendLayout();
@@ -69,7 +70,8 @@
             // 
             // tblToolbar
             // 
-            tblToolbar.ColumnCount = 4;
+            tblToolbar.ColumnCount = 5;
+            tblToolbar.ColumnStyles.Add(new ColumnStyle());
             tblToolbar.ColumnStyles.Add(new ColumnStyle());
             tblToolbar.ColumnStyles.Add(new ColumnStyle());
             tblToolbar.ColumnStyles.Add(new ColumnStyle());
@@ -77,6 +79,7 @@
             tblToolbar.Controls.Add(btnStart, 0, 0);
             tblToolbar.Controls.Add(optTwoPlayer, 1, 0);
             tblToolbar.Controls.Add(optPlayComputer, 2, 0);
+            tblToolbar.Controls.Add(chkWarnAboutToLose, 3, 0);
             tblToolbar.Controls.Add(lblStatus, 0, 1);
             tblToolbar.Dock = DockStyle.Fill;
             tblToolbar.Location = new Point(3, 3);
@@ -121,12 +124,23 @@
             optPlayComputer.TabIndex = 2;
             optPlayComputer.Text = "Play &Against the Computer";
             optPlayComputer.UseVisualStyleBackColor = true;
-            // 
+            //
+            // chkWarnAboutToLose
+            //
+            chkWarnAboutToLose.Anchor = AnchorStyles.Left;
+            chkWarnAboutToLose.AutoSize = true;
+            chkWarnAboutToLose.Location = new Point(813, 3);
+            chkWarnAboutToLose.Name = "chkWarnAboutToLose";
+            chkWarnAboutToLose.Size = new Size(180, 54);
+            chkWarnAboutToLose.TabIndex = 3;
+            chkWarnAboutToLose.Text = "Warn If Lose";
+            chkWarnAboutToLose.UseVisualStyleBackColor = true;
+            //
             // lblStatus
-            // 
+            //
             lblStatus.BackColor = Color.LightYellow;
             lblStatus.BorderStyle = BorderStyle.FixedSingle;
-            tblToolbar.SetColumnSpan(lblStatus, 4);
+            tblToolbar.SetColumnSpan(lblStatus, 5);
             lblStatus.Dock = DockStyle.Fill;
             lblStatus.Location = new Point(3, 60);
             lblStatus.Name = "lblStatus";
@@ -284,6 +298,7 @@
         protected Button btn7;
         protected Button btn8;
         protected Button btn9;
+        protected CheckBox chkWarnAboutToLose;
         protected Label lblName;
     }
 }
