@@ -23,6 +23,7 @@ namespace TicTacToe
         List<Button> lstrankedbuttons;
 
         Color defaultbackcolor;
+        Color defaultforecolor;
         bool playcomputer = false;
 
         public TicTacToeControl()
@@ -30,6 +31,7 @@ namespace TicTacToe
             InitializeComponent();
             lblName.Text = "MG";
             defaultbackcolor = btn1.BackColor;
+            defaultforecolor = btn1.ForeColor;
             lstbuttons = new() { btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9 };
 
             lstbuttons.ForEach(b => b.Click += SpotButton_Click);
@@ -59,7 +61,7 @@ namespace TicTacToe
 
         private void StartGame()
         {
-            lstbuttons.ForEach(b => { b.Text = ""; b.Enabled = true; });
+            lstbuttons.ForEach(b => { b.Text = ""; b.Enabled = true; b.ForeColor = defaultforecolor; });
             gamestatus = GameStatusEnum.Playing;
             currentturn = TurnEnum.X;
             playcomputer = optPlayComputer.Checked;
@@ -194,6 +196,11 @@ namespace TicTacToe
             }
             lst.ForEach(b => b.BackColor = c);
         }
+
+        private void SetPlayerPiecesForeColor(TurnEnum player, Color color)
+        {
+            lstbuttons.Where(b => b.Text == player.ToString()).ToList().ForEach(b => b.ForeColor = color);
+        }
         private void DisplayGameStatus()
         {
             string msg = "Click Start to begin Game";
@@ -212,6 +219,23 @@ namespace TicTacToe
             }
 
             msg = (playcomputer ? optPlayComputer.Text : optTwoPlayer.Text) + " - " + msg;
+
+            // reset colors before applying warning
+            SetPlayerPiecesForeColor(TurnEnum.X, defaultforecolor);
+            SetPlayerPiecesForeColor(TurnEnum.O, defaultforecolor);
+
+            if (chkWarnAboutToLose.Checked && gamestatus == GameStatusEnum.Playing)
+            {
+                TurnEnum opponent = currentturn == TurnEnum.X ? TurnEnum.O : TurnEnum.X;
+                bool aboutToLose = lstwinningsets.Any(l =>
+                    l.Count(b => b.Text == opponent.ToString()) == 2 &&
+                    l.Count(b => b.Text == "") == 1);
+                if (aboutToLose)
+                {
+                    msg = "Heads up";
+                    SetPlayerPiecesForeColor(currentturn, Color.Orange);
+                }
+            }
 
             lblStatus.Text = msg;
         }
