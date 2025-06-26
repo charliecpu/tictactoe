@@ -5,6 +5,8 @@ This repo if for the software implementation of the classic game of Tic Tac
 Toe. This software will allow two players to play against each other or for one player to play against the
 computer. A description of the game plus the requirements of this implementation are provided below.
 
+This version adds a **Hint** button that highlights a winning move in purple when one exists.
+
 ## The Game
 Two players are presented with a 3x3 grid of empty spots. The players take turns marking an empty spot
 with their letter: the first player to move is X and the second player is O. The first player to fill a winning
