@@ -22,13 +22,17 @@ namespace TicTacToe
         List<List<Button>> lstwinningsets;
         List<Button> lstrankedbuttons;
 
+        int xWins = 0;
+        int oWins = 0;
+        int tieGames = 0;
+
         Color defaultbackcolor;
         bool playcomputer = false;
 
         public TicTacToeControl()
         {
             InitializeComponent();
-            lblName.Text = "MG";
+            lblScoreboard.Text = GetScoreboardText();
             defaultbackcolor = btn1.BackColor;
             lstbuttons = new() { btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9 };
 
@@ -65,6 +69,7 @@ namespace TicTacToe
             playcomputer = optPlayComputer.Checked;
             DisplayGameStatus();
             SetButtonsBackcolor(lstbuttons);
+            UpdateScoreboard();
         }
 
 
@@ -160,22 +165,31 @@ namespace TicTacToe
 
         private void DetectWinner(List<Button> lst)
         {
-            if (lst.Count(b => b.Text == currentturn.ToString()) == lst.Count())
+            if (gamestatus == GameStatusEnum.Playing && lst.Count(b => b.Text == currentturn.ToString()) == lst.Count())
             {
-                Color c = Color.Yellow;
                 gamestatus = GameStatusEnum.Winner;
                 SetButtonsBackcolor(lst);
-
+                if (currentturn == TurnEnum.X)
+                {
+                    xWins++;
+                }
+                else
+                {
+                    oWins++;
+                }
+                UpdateScoreboard();
             }
         }
 
 
         private void DetectTie()
         {
-            if (lstbuttons.Count(b => b.Text == "") == 0)
+            if (gamestatus == GameStatusEnum.Playing && lstbuttons.Count(b => b.Text == "") == 0)
             {
                 gamestatus = GameStatusEnum.Tie;
                 SetButtonsBackcolor(lstbuttons);
+                tieGames++;
+                UpdateScoreboard();
             }
         }
 
@@ -193,6 +207,16 @@ namespace TicTacToe
                     break;
             }
             lst.ForEach(b => b.BackColor = c);
+        }
+
+        private string GetScoreboardText()
+        {
+            return $"X Wins: {xWins}  O Wins: {oWins}  Ties: {tieGames}";
+        }
+
+        private void UpdateScoreboard()
+        {
+            lblScoreboard.Text = GetScoreboardText();
         }
         private void DisplayGameStatus()
         {

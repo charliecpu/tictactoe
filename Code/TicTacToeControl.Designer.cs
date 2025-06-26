@@ -44,7 +44,7 @@
             btn7 = new Button();
             btn8 = new Button();
             btn9 = new Button();
-            lblName = new Label();
+            lblScoreboard = new Label();
             tblMain.SuspendLayout();
             tblToolbar.SuspendLayout();
             tblSpots.SuspendLayout();
@@ -56,7 +56,7 @@
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tblMain.Controls.Add(tblToolbar, 0, 0);
             tblMain.Controls.Add(tblSpots, 0, 1);
-            tblMain.Controls.Add(lblName, 0, 2);
+            tblMain.Controls.Add(lblScoreboard, 0, 2);
             tblMain.Dock = DockStyle.Fill;
             tblMain.Location = new Point(0, 0);
             tblMain.Name = "tblMain";
@@ -240,15 +240,15 @@
             btn9.TabIndex = 8;
             btn9.UseVisualStyleBackColor = true;
             // 
-            // lblName
+            // lblScoreboard
             // 
-            lblName.BackColor = Color.White;
-            lblName.Dock = DockStyle.Fill;
-            lblName.Location = new Point(3, 650);
-            lblName.Name = "lblName";
-            lblName.Size = new Size(962, 41);
-            lblName.TabIndex = 2;
-            lblName.TextAlign = ContentAlignment.MiddleCenter;
+            lblScoreboard.BackColor = Color.White;
+            lblScoreboard.Dock = DockStyle.Fill;
+            lblScoreboard.Location = new Point(3, 650);
+            lblScoreboard.Name = "lblScoreboard";
+            lblScoreboard.Size = new Size(962, 41);
+            lblScoreboard.TabIndex = 2;
+            lblScoreboard.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // TicTacToeControl
             // 
@@ -284,6 +284,6 @@
         protected Button btn7;
         protected Button btn8;
         protected Button btn9;
-        protected Label lblName;
+        protected Label lblScoreboard;
     }
 }
