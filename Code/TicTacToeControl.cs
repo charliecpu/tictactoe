@@ -235,12 +235,13 @@ namespace TicTacToe
             ShowHint();
         }
 
+
         private void ShowHint()
         {
-            SetButtonsBackcolor(lstbuttons);
-
             if (gamestatus != GameStatusEnum.Playing)
                 return;
+
+            SetButtonsBackcolor(lstbuttons);
 
             var set = lstwinningsets.FirstOrDefault(l =>
                 l.Count(b => b.Text == currentturn.ToString()) == 2 &&
