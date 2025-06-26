@@ -64,7 +64,10 @@ namespace TicTacToe
             currentturn = TurnEnum.X;
             playcomputer = optPlayComputer.Checked;
             DisplayGameStatus();
-            SetButtonsBackcolor(lstbuttons);
+            if (gamestatus == GameStatusEnum.Playing)
+            {
+                SetButtonsBackcolor(lstbuttons);
+            }
         }
 
 
@@ -198,10 +201,28 @@ namespace TicTacToe
         {
             string msg = "Click Start to begin Game";
 
+            if (gamestatus == GameStatusEnum.Playing)
+            {
+                SetButtonsBackcolor(lstbuttons);
+            }
+
             switch (gamestatus)
             {
                 case GameStatusEnum.Playing:
                     msg = "Current Turn: " + currentturn.ToString();
+
+                    if (chkWarnLoss.Checked)
+                    {
+                        TurnEnum opponent = currentturn == TurnEnum.X ? TurnEnum.O : TurnEnum.X;
+                        var warnSet = lstwinningsets.FirstOrDefault(l =>
+                            l.Count(b => b.Text == opponent.ToString()) == 2 &&
+                            l.Count(b => b.Text == "") == 1);
+                        if (warnSet != null)
+                        {
+                            warnSet.ForEach(b => b.BackColor = Color.Orange);
+                            msg = "Warning: Opponent can win!";
+                        }
+                    }
                     break;
                 case GameStatusEnum.Tie:
                     msg = "Tie";
