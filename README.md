@@ -14,3 +14,6 @@ player has a winning set, then the game results in a tie.
 **The full spec for this software is in the repo docs folder [tic-tac-toe-spec.md](docs/tic-tac-toe-spec.md)**
 
 ![Tic_Tac_Toe](https://github.com/user-attachments/assets/f138a579-e3d0-4f0f-a6b6-08e2a419d6c0)
+
+## New Feature: Scoreboard
+A running scoreboard below the board keeps track of X wins, O wins and ties across games.
