@@ -15,6 +15,7 @@ The software will present the Tic Tac Toe game with the following UI elements:
 - **Toolbar (top of screen):**
   - Option buttons to choose between *2 Player* or *Play Against the Computer*
   - *Start* button
+  - *Hint* button shows a possible winning move
   - Label to display *Game Status* message
 
 ### Player Modes  
@@ -44,6 +45,7 @@ The computer is letter **O**. After **X** s turn, the computer makes its move us
   - X clicks an empty spot; the button displays "X"
   - Turn changes to O, reflected in status
   - Clicking a taken spot has no effect
+  - Clicking **Hint** highlights a winning spot in purple if one is available
 
 - **Winning:**
   - Winning spots change background color

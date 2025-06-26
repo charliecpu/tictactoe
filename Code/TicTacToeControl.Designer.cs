@@ -31,6 +31,7 @@
             tblMain = new TableLayoutPanel();
             tblToolbar = new TableLayoutPanel();
             btnStart = new Button();
+            btnHint = new Button();
             optTwoPlayer = new RadioButton();
             optPlayComputer = new RadioButton();
             lblStatus = new Label();
@@ -69,14 +70,16 @@
             // 
             // tblToolbar
             // 
-            tblToolbar.ColumnCount = 4;
+            tblToolbar.ColumnCount = 5;
+            tblToolbar.ColumnStyles.Add(new ColumnStyle());
             tblToolbar.ColumnStyles.Add(new ColumnStyle());
             tblToolbar.ColumnStyles.Add(new ColumnStyle());
             tblToolbar.ColumnStyles.Add(new ColumnStyle());
             tblToolbar.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tblToolbar.Controls.Add(btnStart, 0, 0);
-            tblToolbar.Controls.Add(optTwoPlayer, 1, 0);
-            tblToolbar.Controls.Add(optPlayComputer, 2, 0);
+            tblToolbar.Controls.Add(btnHint, 1, 0);
+            tblToolbar.Controls.Add(optTwoPlayer, 2, 0);
+            tblToolbar.Controls.Add(optPlayComputer, 3, 0);
             tblToolbar.Controls.Add(lblStatus, 0, 1);
             tblToolbar.Dock = DockStyle.Fill;
             tblToolbar.Location = new Point(3, 3);
@@ -88,7 +91,7 @@
             tblToolbar.TabIndex = 0;
             // 
             // btnStart
-            // 
+            //
             btnStart.Anchor = AnchorStyles.Left;
             btnStart.AutoSize = true;
             btnStart.Location = new Point(3, 3);
@@ -97,28 +100,39 @@
             btnStart.TabIndex = 0;
             btnStart.Text = "&Start";
             btnStart.UseVisualStyleBackColor = true;
-            // 
+            //
+            // btnHint
+            //
+            btnHint.Anchor = AnchorStyles.Left;
+            btnHint.AutoSize = true;
+            btnHint.Location = new Point(118, 3);
+            btnHint.Name = "btnHint";
+            btnHint.Size = new Size(109, 54);
+            btnHint.TabIndex = 1;
+            btnHint.Text = "&Hint";
+            btnHint.UseVisualStyleBackColor = true;
+            //
             // optTwoPlayer
-            // 
+            //
             optTwoPlayer.Anchor = AnchorStyles.Left;
             optTwoPlayer.AutoSize = true;
             optTwoPlayer.Checked = true;
-            optTwoPlayer.Location = new Point(118, 3);
+            optTwoPlayer.Location = new Point(233, 3);
             optTwoPlayer.Name = "optTwoPlayer";
             optTwoPlayer.Size = new Size(183, 54);
-            optTwoPlayer.TabIndex = 1;
+            optTwoPlayer.TabIndex = 2;
             optTwoPlayer.TabStop = true;
             optTwoPlayer.Text = "2 &Player";
             optTwoPlayer.UseVisualStyleBackColor = true;
-            // 
+            //
             // optPlayComputer
-            // 
+            //
             optPlayComputer.Anchor = AnchorStyles.Left;
             optPlayComputer.AutoSize = true;
-            optPlayComputer.Location = new Point(307, 3);
+            optPlayComputer.Location = new Point(422, 3);
             optPlayComputer.Name = "optPlayComputer";
             optPlayComputer.Size = new Size(500, 54);
-            optPlayComputer.TabIndex = 2;
+            optPlayComputer.TabIndex = 3;
             optPlayComputer.Text = "Play &Against the Computer";
             optPlayComputer.UseVisualStyleBackColor = true;
             // 
@@ -126,7 +140,7 @@
             // 
             lblStatus.BackColor = Color.LightYellow;
             lblStatus.BorderStyle = BorderStyle.FixedSingle;
-            tblToolbar.SetColumnSpan(lblStatus, 4);
+            tblToolbar.SetColumnSpan(lblStatus, 5);
             lblStatus.Dock = DockStyle.Fill;
             lblStatus.Location = new Point(3, 60);
             lblStatus.Name = "lblStatus";
@@ -271,6 +285,7 @@
         protected TableLayoutPanel tblMain;
         protected TableLayoutPanel tblToolbar;
         protected Button btnStart;
+        protected Button btnHint;
         protected RadioButton optTwoPlayer;
         protected RadioButton optPlayComputer;
         protected Label lblStatus;

@@ -34,6 +34,7 @@ namespace TicTacToe
 
             lstbuttons.ForEach(b => b.Click += SpotButton_Click);
             btnStart.Click += BtnStart_Click;
+            btnHint.Click += BtnHint_Click;
             /*
 1,2,3
 4,5,6
@@ -227,6 +228,30 @@ namespace TicTacToe
         private void BtnStart_Click(object? sender, EventArgs e)
         {
             StartGame();
+        }
+
+        private void BtnHint_Click(object? sender, EventArgs e)
+        {
+            ShowHint();
+        }
+
+
+        private void ShowHint()
+        {
+            if (gamestatus != GameStatusEnum.Playing)
+                return;
+
+            SetButtonsBackcolor(lstbuttons);
+
+            var set = lstwinningsets.FirstOrDefault(l =>
+                l.Count(b => b.Text == currentturn.ToString()) == 2 &&
+                l.Count(b => b.Text == "") == 1);
+
+            if (set != null)
+            {
+                var btn = set.First(b => b.Text == "");
+                btn.BackColor = Color.Purple;
+            }
         }
     }
 }
